@@ -15,7 +15,7 @@
 //    int num = calculator.process(5);
 //    out.print("5의 3제곱 : " + num);
 %>
-<jsp:useBean id="calculator" class="kr.beans.Calculator" />
+<jsp:useBean id="calculator" class="kr.beans.Calculator"  />
 <%
     int num = calculator.process(5);
     out.print("5의 3제곱 : " + num);
