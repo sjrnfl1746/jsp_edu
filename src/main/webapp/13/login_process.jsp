@@ -1,0 +1,31 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cookie</title>
+</head>
+<body>
+<%
+    request.setCharacterEncoding("UTF-8");
+
+    String id = request.getParameter("id");
+    String passwd = request.getParameter("passwd");
+
+    if (id.equals("admin") && passwd.equals("admin1234")) { // 전송된 아이디 비밀번호가 일치한다면
+        // 쿠키 이름 userId, userPw에 값을 설정하도록 Cookie 객체를 생성
+        Cookie cookieId = new Cookie("userId", id);
+        Cookie cookiePw = new Cookie("userPw", passwd);
+
+        // 생성된 Cookie 객체를 쿠키로 저장하도록 response 내장 객체의 addCookie() 메서드를 작성
+        response.addCookie(cookieId);
+        response.addCookie(cookiePw);
+
+        response.sendRedirect("welcome.jsp");
+
+    } else { // 일치하지 않으면 실패 메시지를 출력
+        response.sendRedirect("login.jsp");
+    }
+%>
+</body>
+</html>
